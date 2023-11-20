@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
-    public abstract class Spaceship : ISpaceship
+    public abstract class Spaceship : ISpaceship, IAbility
     {
         public string Name { get; set; }
         public double Structure { get; set; }
@@ -20,10 +20,11 @@ namespace TP2
 
         public List<Weapon> Weapons { get; }
 
-        public Spaceship(int _maxStructure, int _maxShield)
+        public Spaceship(int _maxStructure, int _maxShield, string _name)
         {
             Structure = _maxStructure;
             Shield = _maxShield;
+            Name = _name;
             CurrentStructure = Structure;
             CurrentShield = Shield;
             Weapons = new List<Weapon>();
@@ -122,6 +123,10 @@ namespace TP2
                     CurrentShield = Shield;
                 }
             }
+        }
+
+        public virtual void UseAbility(List<Spaceship> spaceships)
+        {
         }
     }
 }

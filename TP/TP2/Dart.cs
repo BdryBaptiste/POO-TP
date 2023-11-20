@@ -8,8 +8,9 @@ namespace TP2
 {
     public class Dart : Spaceship
     {
-        public Dart() : base(10, 3)
+        public Dart(string _name) : base(10, 3, _name)
         {
+            Name = _name;
             this.AddWeapon(new Weapon("Laser", 2, 3, Weapon.EWeaponType.Direct, 0));
         }
 

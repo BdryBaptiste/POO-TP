@@ -9,8 +9,9 @@ namespace TP2
 {
     public class Rocinante : Spaceship
     {
-        public Rocinante() : base(3, 5)
+        public Rocinante(string _name) : base(3, 5, _name)
         {
+            Name = _name;
             this.AddWeapon(new Weapon("Torpille", 3, 3, EWeaponType.Guided, 2));
         }
 

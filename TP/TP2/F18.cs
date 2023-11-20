@@ -8,16 +8,17 @@ namespace TP2
 {
     public class F18 : Spaceship, IAbility
     {
-        public F18() : base(15, 0) 
+        public F18(string _name) : base(15, 0, _name) 
         {
+            Name= _name;
         }
 
-        public void UseAbility(List<Spaceship> spaceships)
+        public override void UseAbility(List<Spaceship> spaceships)
         {
             int playerPosition = spaceships.FindIndex(s => s is ViperMKII);
             if (playerPosition >= 0 && (playerPosition == 0 || playerPosition == 2))
             {
-                Console.WriteLine("Kachow");
+                Console.WriteLine("Dodge This. *F18 blows up*");
                 spaceships[playerPosition].TakeDamages(10);
 
                 int thisDamage = (int)Math.Ceiling(this.Structure);

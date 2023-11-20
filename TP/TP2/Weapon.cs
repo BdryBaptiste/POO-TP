@@ -30,37 +30,38 @@ namespace TP2
             MaxDamage = _maxDamage;
             Type = _weaponType;
             ReloadTime = _reloadTime;
-            TimeBeforReload = ReloadTime;
+            TimeBeforReload = 0;
         }
         public int Shoot()
         {
-            if (TimeBeforReload > 0)
+            if (TimeBeforReload == 0)
             {
-                return 0;
+                TimeBeforReload = ReloadTime;
+
+                Random random = new Random();
+                int chance = random.Next(1, 101);
+
+                int damage = random.Next(MinDamage, MaxDamage + 1);
+
+                switch (Type)
+                {
+                    case EWeaponType.Direct:
+                        if (chance <= 10) return 0;
+                        break;
+                    case EWeaponType.Explosive:
+                        if (chance <= 25) return 0;
+                        damage *= 2;
+                        TimeBeforReload = ReloadTime * 2;
+                        break;
+                    case EWeaponType.Guided:
+                        damage = MinDamage;
+                        break;
+                }
+
+                return damage;
             }
+            return 0;
 
-            TimeBeforReload = ReloadTime;
-
-            Random random = new Random();
-            int chance = random.Next(1, 101);
-
-            int damage = random.Next(MinDamage, MaxDamage + 1);
-
-            switch (Type)
-            {
-                case EWeaponType.Direct:
-                    if (chance <= 10) return 0;
-                    break;
-                case EWeaponType.Explosive:
-                    if (chance <= 25) return 0;
-                    damage *= 2;
-                    break;
-                case EWeaponType.Guided:
-                    damage = MinDamage;
-                    break;
-            }
-
-            return damage;
         }
 
         public void ResetReloadTime()

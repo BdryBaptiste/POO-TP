@@ -9,8 +9,9 @@ namespace TP2
 {
     public class BWings : Spaceship
     {
-        public BWings() : base(30, 0)
+        public BWings(string _name) : base(30, 0, _name)
         {
+            Name = _name;
             this.AddWeapon(new Weapon("Hammer", 1, 8, EWeaponType.Explosive, 2));
         }
 

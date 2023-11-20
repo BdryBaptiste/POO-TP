@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace TP2
 {
     public class Tardis : Spaceship, IAbility
     {
-        public Tardis() : base(1, 0)
+        public Tardis(string _name) : base(1, 0, _name) 
         {
+            Name= _name;
         }
 
-        public void UseAbility(List<Spaceship> spaceships)
+        public override void UseAbility(List<Spaceship> spaceships)
         {
             Random random = new Random();
             int shipToMoveIndex = random.Next(spaceships.Count);
             int newPosition = random.Next(spaceships.Count);
 
             Spaceship shipToMove = spaceships[shipToMoveIndex];
+            Spaceship movedShip = spaceships[newPosition];
             spaceships[shipToMoveIndex] = spaceships[newPosition];
             spaceships[newPosition] = shipToMove;
 
-            Console.WriteLine($"Tardis has teleported {shipToMove.Name} from position {shipToMoveIndex} to {newPosition}.");
+            Console.WriteLine($"Tardis has teleported {shipToMove.Name} and {movedShip.Name}: positions {shipToMoveIndex} and {newPosition}.");
+
         }
     }
 }
