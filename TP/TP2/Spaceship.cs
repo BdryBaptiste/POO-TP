@@ -13,7 +13,7 @@ namespace TP2
         public double Shield { get; set; }
         public double CurrentStructure { get; set; }
         public double CurrentShield { get; set; }
-        public bool IsDestroyed { get; }
+        public bool IsDestroyed { get; set; }
         public int MaxWeapons { get; }
         public double AverageDamages { get { return AverageDamage(); } }
         public bool BelongsPlayer { get; }
@@ -95,6 +95,11 @@ namespace TP2
             }
 
             CurrentStructure -= damages;
+
+            if(CurrentStructure < 0)
+            {
+                IsDestroyed = true;
+            }
         }
 
         public virtual void ShootTarget(Spaceship target)

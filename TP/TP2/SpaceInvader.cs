@@ -6,7 +6,7 @@ namespace TP2
     {
         private Armory armory;
         private List<Spaceship> enemyShips = new List<Spaceship>();
-        private ViperMKII playerShip;
+        private ViperMKII playerShip = new ViperMKII();
 
         private void Init()
         {
@@ -59,6 +59,19 @@ namespace TP2
             while (!game.playerShip.IsDestroyed && game.enemyShips.Any(e => !e.IsDestroyed))
             {
                 game.PlayRound();
+                Console.WriteLine($"Vaisseau Joueur - Structure: {game.playerShip.CurrentStructure}, Bouclier: {game.playerShip.CurrentShield}");
+                if (game.playerShip.IsDestroyed)
+                {
+                    Console.WriteLine("Votre vaisseau a été détruit !");
+                }
+
+                foreach (var ship in game.enemyShips)
+                {
+                    string status = ship.IsDestroyed ? "Détruit" : "Actif";
+                    Console.WriteLine($"Vaisseau Ennemi ({ship.Name}) - Structure: {ship.CurrentStructure}, Bouclier: {ship.CurrentShield}, État: {status}");
+                }
+                Console.WriteLine("Appuyez sur Entrée pour continuer...");
+                Console.ReadLine();
             }
 
             Console.WriteLine(game.playerShip.IsDestroyed ? "GameOver" : "You Win");
