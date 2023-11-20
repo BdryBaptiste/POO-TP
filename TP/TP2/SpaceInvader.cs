@@ -42,7 +42,7 @@ namespace TP2
                 enemy.ShootTarget(playerShip);
             }
 
-            var livingEnemies = enemyShips.Where(e => !e.IsDestroyed).ToList();
+            var livingEnemies = enemyShips.Where(e => !e.IsDestroyed).ToList();            
             if (livingEnemies.Any())
             {
                 var target = livingEnemies[new Random().Next(livingEnemies.Count)];
@@ -59,16 +59,16 @@ namespace TP2
             while (!game.playerShip.IsDestroyed && game.enemyShips.Any(e => !e.IsDestroyed))
             {
                 game.PlayRound();
-                Console.WriteLine($"Vaisseau Joueur - Structure: {game.playerShip.CurrentStructure}, Bouclier: {game.playerShip.CurrentShield}");
+                Console.WriteLine($"Player ship - Structure: {game.playerShip.CurrentStructure}, Shield: {game.playerShip.CurrentShield}");
                 if (game.playerShip.IsDestroyed)
                 {
-                    Console.WriteLine("Votre vaisseau a été détruit !");
+                    Console.WriteLine("Your ship was Destroyed !");
                 }
 
                 foreach (var ship in game.enemyShips)
                 {
                     string status = ship.IsDestroyed ? "Détruit" : "Actif";
-                    Console.WriteLine($"Vaisseau Ennemi ({ship.Name}) - Structure: {ship.CurrentStructure}, Bouclier: {ship.CurrentShield}, État: {status}");
+                    Console.WriteLine($"Enemy ({ship.Name}) - Structure: {ship.CurrentStructure}, Shield: {ship.CurrentShield}, Status: {status}");
                 }
                 Console.WriteLine("Appuyez sur Entrée pour continuer...");
                 Console.ReadLine();

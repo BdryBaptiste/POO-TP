@@ -96,7 +96,7 @@ namespace TP2
 
             CurrentStructure -= damages;
 
-            if(CurrentStructure < 0)
+            if(CurrentStructure <= 0)
             {
                 IsDestroyed = true;
             }

@@ -21,6 +21,7 @@ namespace TP2
             var rechargedWeapons = Weapons.Where(w => w.ReloadTime == 0).ToList();
             if (rechargedWeapons.Any())
             {
+                Console.WriteLine(target);
                 var weaponToShoot = rechargedWeapons[new Random().Next(rechargedWeapons.Count)];
                 int damage = weaponToShoot.Shoot();
                 target.TakeDamages(damage);
