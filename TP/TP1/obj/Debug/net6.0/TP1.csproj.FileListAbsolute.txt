@@ -1,0 +1,4 @@
+D:\1-COURS\POO\TP\TP1\obj\Debug\net6.0\TP1.GeneratedMSBuildEditorConfig.editorconfig
+D:\1-COURS\POO\TP\TP1\obj\Debug\net6.0\TP1.AssemblyInfoInputs.cache
+D:\1-COURS\POO\TP\TP1\obj\Debug\net6.0\TP1.AssemblyInfo.cs
+D:\1-COURS\POO\TP\TP1\obj\Debug\net6.0\TP1.csproj.CoreCompileInputs.cache
